@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://thymeleaf.org" lang="en">
+
+
+<head>
+<title>Rooms</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+	<style>
+#header{
+  background-color: #4B4949;
+  padding: 5px;
+  text-align: center;
+  color: black;
+  border: 2px solid black;
+
+}
+#middlesection{
+
+
+}
+
+#button-group{
+float:left;
+background-color:#808080;
+width:20%;
+height:570px;
+list-style-type: none;
+
+}
+.btn{
+  border-radius:5%;
+  border:1px solid black;
+  height:40px;
+  width:100%;
+  margin-top:15px;
+  margin-bottom:15px;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size:15px;
+  }
+.btn:hover{
+cusor:pointer;
+background-color:#87cefa;
+color: white;
+cursor:pointer;
+}
+  
+#sec{
+float:left;
+background-color:#d3d3d3;
+width:80%;
+height:570px;
+}
+#dash{
+padding:10px;
+height:80px;
+}
+#generate{
+background-color:blue;
+
+}
+.btnsch2:hover{
+opacity:0.7;
+cursor:pointer;
+}
+.btnsch:hover{
+opacity:0.7;
+cursor:pointer;
+}
+#searchcontainer{
+float:left;
+}
+#buttoncontainer{
+float:left;
+margin-left:400px;
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  padding-top: 50px;
+}
+.modal-content{
+  background-color: #fefefe;
+  margin: 10% auto 15% auto; /* 10% from the top, 15% from the bottom and centered */
+  border: 3px solid black;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+#cancelcontainer{
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+ }
+ .container{
+ padding:16px;
+ }
+ 
+ .box{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.closes {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.closes:hover,
+.closes:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.cancelbtn,.add{
+float:left;
+width: auto;
+padding:10px;
+}
+.add:hover{
+opacity:0.7;
+cursor:pointer;
+}
+.cancelbtn:hover{
+opacity:0.7;
+cursor:pointer;
+}
+
+.cancelbtn{
+background-color:#f44336;
+}
+.add{
+background-color:#6a5acd;
+margin-left:220px;
+
+}
+
+#footer{
+
+background-color:#4B4949;
+  height: auto;
+  border: 2px solid black;
+  padding-left:400px;
+  padding-top:10px;
+  color: white;
+}
+
+</head>
+
+
+
+
+
+</style>
+
+<body>
+
+	<div id="header">
+		<h2 style="color:#c0c0c0;">Timetable Management Dashboard</h2>
+		
+	</div>
+	
+	<div id="middlesection">
+			<nav id="button-group">
+				
+			<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
+			<a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
+			<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses</button> </a>
+			<a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
+			<a href="classes.html"> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Classes</button> </a>
+			<a href="periods.html"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+			
+				
+			</nav>
+	
+			<section id="sec">
+				<div id="dash">
+					<div id="searchcontainer">
+					<form action="">
+						<input type="text" placeholder="Enter a keyword to search.." name="search" style="float:left; border:none; width:400px; height:30px;" >
+						<button class="btnsch" type="submit" style="float:left;border:none;
+						background-color:#32cd32;width:30px; height:32px;color:white;"><i class="fa fa-search" ></i></button>
+					</form>
+					</div>
+				
+					<div id="buttoncontainer">
+					
+					<button class="btnsch2" onclick="document.getElementById('id01').style.display='block'" 
+					style="color:white; border:2px solid black;height:40px; width: 150px; background-color: #32cd32">
+					<i class="fa fa-plus" aria-hidden="true"></i> Add New Room </button>
+					
+					
+					<div id="id01" class="modal">
+						
+						<form class="modal-content" action="" style=width:450px;>
+							<div class="container">
+								
+								<div id="cancelcontainer">
+								<span onclick="document.getElementById('id01').style.display='none'" class="closes" title="Close Modal">&times;</span>
+								</div>
+								
+								<p> Add New Lecture Room </p>
+								<label for="name"><b>Name</b></label>
+								<input class="box" type="text" placeholder="Enter Name" name="name" required>
+
+								<label for="capacity"><b>Capacity</b></label>
+								<input class="box" type="number" placeholder="Enter the Capacity" name="capacity" required>
+
+								<div class="clearfix">
+									<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Room</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				
+					</div>
+				</div>
+				<div class="container">
+
+					<div class="col-md-10">
+
+						<table class="table" id="rooms">
+							<thead>
+							<tr>
+								<th>Room Name</th>
+								<th>Capasity</th>
+							</tr>
+
+							</thead>
+
+							<tbody>
+
+							<tr th:each="room : ${rooms}">
+
+								<td th:text="${room.name}">Room Name</td>
+								<td th:text="${room.capasity}">Capasity</td>
+
+							</tr>
+
+
+
+							</tbody>
+
+						</table>
+
+					</div>
+
+
+
+
+
+				</div>
+			</section>
+	</div>
+	
+	<div id="footer">
+		
+		
+		<p style=""><i class="fa fa-whatsapp" aria-hidden="true"></i> Tel/Whatsapp: 0758882011</p>
+		<p style=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Email :davidmalamu79@gmail.com </p>
+		
+	</div>
+<script>
+	$(document).ready(function() {
+		$('#rooms').DataTable()
+
+	});
+</script>
+	
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal)  {
+    modal.style.display = "none";
+  }
+}
+
+
+</script>
+
+</body>
+</html>

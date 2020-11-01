@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://thymeleaf.org" lang="en">
+
+
+<head>
+<title>Dashboard</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+#header{
+  background-color: #4B4949;
+  padding: 5px;
+  text-align: center;
+  color: black;
+  border: 2px solid black;
+
+}
+#middlesection{
+
+
+}
+
+#button-group{
+float:left;
+background-color:#808080;
+width:20%;
+height:570px;
+list-style-type: none;
+
+}
+.btn{
+  border-radius:5%;
+  border:1px solid black;
+  height:40px;
+  width:100%;
+  margin-top:15px;
+  margin-bottom:15px;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size:15px;
+  }
+.btn:hover{
+cusor:pointer;
+background-color:#87cefa;
+color: white;
+cursor:pointer;
+}
+  
+#sec{
+float:left;
+background-color:#d3d3d3;
+width:80%;
+height:570px;
+}
+.butt{
+border-radius:5%;
+  border:1px solid black;
+  height:100px;
+  width:150px;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top:50px;
+  margin-right:80px;
+  box-shadow:4px 3px #708090;
+  font-size:17px;
+}
+.butt:hover{
+opacity:0.9;
+cursor:pointer;
+width:155px;
+height:105px;
+border-radius:8%;
+color:blue;
+}
+#generate{
+margin-top:100px;
+padding-left:350px;
+}
+
+#footer{
+
+background-color:#4B4949;
+  height: auto;
+  border: 2px solid black;
+  padding-left:400px;
+  padding-top:10px;
+  color: white;
+}
+
+</head>
+
+
+
+
+
+</style>
+
+<body>
+
+	<div id="header">
+		<h2 style="color:#c0c0c0;">Timetable Management Dashboard</h2>
+		
+	</div>
+	
+	<div id="middlesection">
+			<nav id="button-group">
+				
+			<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
+			<a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
+			<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses</button> </a>
+			<a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Classes</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
+			<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+			
+				
+			</nav>
+	
+			<section id="sec">
+				<div id="dash">
+				
+				<a href="/admin/rooms"> <button class="butt" style="background-color:#00fa9a;margin-left:50px;"><i class="fa fa-folder"></i> Rooms</button> </a>
+				<a href="/admin/courses"> <button class="butt" style="background-color:#00ced1;"><i class="fa fa-bars"></i> Courses</button> </a>
+				<a href="/admin/lecturers"> <button class="butt" style="background-color:#6a5acd;"><i class="fa fa-graduation-cap" aria-hidden="true"></i>  Lectuers</button> </a>
+				<a href=""> <button class="butt" style="background-color:#3cb371;"><i class="fa fa-users" aria-hidden="true"></i> Classes</button> </a>
+				
+				</div>
+				<div id="generate">
+			
+				<a href=""> <button class="butt" style="background-color:#f4a460; width:250px; height: 80px;font size:15px"><i class="fa fa-calendar" aria-hidden="true"></i> Generate Timetable </button> </a>
+			
+			
+				</div>
+			</section>
+	</div>
+	
+	<div id="footer">
+		
+		
+		<p style=""><i class="fa fa-whatsapp" aria-hidden="true"></i> Tel/Whatsapp: 0758882011</p>
+		<p style=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Email :davidmalamu79@gmail.com </p>
+		
+	</div>
+
+</body>
+</html>
