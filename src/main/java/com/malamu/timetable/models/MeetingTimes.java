@@ -12,13 +12,12 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "room_tbl")
-public class Room {
+@Entity(name = "meetingtimes_tbl")
+public class MeetingTimes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String number;
-    private int seatingCapasity;
-
+    private String startTime;
+    private String endTime;
 }

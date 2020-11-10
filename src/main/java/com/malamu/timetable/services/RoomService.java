@@ -27,8 +27,8 @@ public class RoomService {
     @Transactional
     public Room updateRoom(int id,Room  room){
         Room room1=roomRepository.findById(id).get();
-        room1.setCapasity(room.getCapasity());
-        room1.setName(room.getName());
+        room1.setNumber(room.getNumber());
+        room1.setSeatingCapasity(room.getSeatingCapasity());
         return roomRepository.save(room1);
     }
 

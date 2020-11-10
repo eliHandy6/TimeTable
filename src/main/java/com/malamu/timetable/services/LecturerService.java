@@ -33,8 +33,7 @@ public class LecturerService {
     @Transactional
     public Lecturer updateLecturer(int id,Lecturer lecturer){
      Lecturer lecturer1 =lecturerRepository.findById(id).get();
-     lecturer1.setEmail(lecturer.getEmail());
-     lecturer1.setUnavailablePeriod(lecturer.getUnavailablePeriod());
+     lecturer1.setIdNo(lecturer.getIdNo());
      lecturer1.setName(lecturer.getName());
      return lecturerRepository.save(lecturer1);
     }

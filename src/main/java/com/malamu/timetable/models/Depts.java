@@ -12,19 +12,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "course_tbl")
-public class Course {
+@Entity(name = "depts_tbl")
+public class Depts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String number;
     private String name;
-    private int noOfStudents;
-
     @ManyToOne( fetch = FetchType.LAZY)
-    @JoinColumn(name = "lecturer_id",nullable = false)
+    @JoinColumn(name = "course_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Lecturer lecturer;
+    private Course course;
 }

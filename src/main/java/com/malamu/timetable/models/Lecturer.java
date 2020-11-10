@@ -18,9 +18,9 @@ public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private String idNo;
     private String name;
-    private String email;
-    private String unavailablePeriod;
+
 
 
 }
