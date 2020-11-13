@@ -22,11 +22,11 @@ public class GenerateTimeTableController {
     private  final DeptServices deptService;
     private  final MeetingService meetingService;
 
-   List<Room> roomList=roomService.findAvailableRooms();
-   List<Lecturer> lecturerList=lecturerService.findLecturers();
-   List<Course> courseList=courseService.findAvailableCourses();
-   List<Depts> deptsList=deptService.findAllDepts();
-   List<MeetingTimes> timesList=meetingService.findAll();
+//   List<Room> roomList=roomService.findAvailableRooms();
+//   List<Lecturer> lecturerList=lecturerService.findLecturers();
+//   List<Course> courseList=courseService.findAvailableCourses();
+//   List<Depts> deptsList=deptService.findAllDepts();
+//   List<MeetingTimes> timesList=meetingService.findAll();
 
 
 

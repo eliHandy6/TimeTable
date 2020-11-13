@@ -20,6 +20,7 @@ public class Lecturer {
     private int id;
     private String idNo;
     private String name;
+    private String email;
 
 
 

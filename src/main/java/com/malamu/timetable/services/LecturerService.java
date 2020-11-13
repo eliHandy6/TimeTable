@@ -35,6 +35,7 @@ public class LecturerService {
      Lecturer lecturer1 =lecturerRepository.findById(id).get();
      lecturer1.setIdNo(lecturer.getIdNo());
      lecturer1.setName(lecturer.getName());
+     lecturer1.setEmail(lecturer.getEmail());
      return lecturerRepository.save(lecturer1);
     }
 
