@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html   xmlns:th="http://thymeleaf.org" lang="en">
+<html lang="en">
 
 
 <head>
@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <style>
 #header{
   background-color: #4B4949;
@@ -80,7 +83,153 @@ color:blue;
 }
 #generate{
 margin-top:100px;
-padding-left:350px;
+margin-left:350px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  padding-top: 50px;
+}
+.modal-content{
+  background-color: #fefefe;
+  margin: 1% auto 15% auto; /* 1% from the top, 15% from the bottom and centered */
+  border: 3px solid black;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+#cancelcontainer{
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+ }
+ .container{
+ padding:16px;
+ }
+ 
+ .box{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.closes {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.closes:hover,
+.closes:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.cancelbtn,.add{
+float:left;
+width: auto;
+padding:10px;
+}
+.add:hover{
+opacity:0.7;
+cursor:pointer;
+}
+.cancelbtn:hover{
+opacity:0.7;
+cursor:pointer;
+}
+
+.cancelbtn{
+background-color:#f44336;
+}
+.add{
+background-color:#6a5acd;
+margin-left:220px;
+
+}
+
+/*STYLING CHECKBOX*/
+
+.containerr {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerr input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containerr:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerr input:checked ~ .checkmark {
+  background-color: #00ffff;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containerr input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerr .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 3px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #footer{
@@ -110,15 +259,15 @@ background-color:#4B4949;
 	
 	<div id="middlesection">
 			<nav id="button-group">
-				
-			<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
-			<a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
-			<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses</button> </a>
-			<a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
-			<a href=""> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Classes</button> </a>
-			<a href=""> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
-			<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
-			<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+
+				<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
+				<a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
+				<a href="/admin/depts"> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Departments</button> </a>
+				<a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
+				<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses Details</button> </a>
+				<a href="/admin/periods"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
+				<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
+				<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 			
 				
 			</nav>
@@ -129,14 +278,88 @@ background-color:#4B4949;
 				<a href="/admin/rooms"> <button class="butt" style="background-color:#00fa9a;margin-left:50px;"><i class="fa fa-folder"></i> Rooms</button> </a>
 				<a href="/admin/courses"> <button class="butt" style="background-color:#00ced1;"><i class="fa fa-bars"></i> Courses</button> </a>
 				<a href="/admin/lecturers"> <button class="butt" style="background-color:#6a5acd;"><i class="fa fa-graduation-cap" aria-hidden="true"></i>  Lectuers</button> </a>
-				<a href=""> <button class="butt" style="background-color:#3cb371;"><i class="fa fa-users" aria-hidden="true"></i> Classes</button> </a>
+				<a href="/admin/depts"> <button class="butt" style="background-color:#3cb371;"><i class="fa fa-users" aria-hidden="true"></i> Departments</button> </a>
 				
 				</div>
+				<div id="lowersection">
 				<div id="generate">
-			
-				<a href=""> <button class="butt" style="background-color:#f4a460; width:250px; height: 80px;font size:15px"><i class="fa fa-calendar" aria-hidden="true"></i> Generate Timetable </button> </a>
-			
-			
+				<button class="butt" onclick="document.getElementById('id01').style.display='block'" 
+				style="background-color:#f4a460; width:250px; height: 80px;font size:15px">
+				<i class="fa fa-calendar" aria-hidden="true"></i> Generate Timetable </button>
+				
+				<div id="id01" class="modal">
+						
+						<form class="modal-content" action="" style=width:450px;>
+							<div class="container">
+								
+								<div id="cancelcontainer">
+								<span onclick="document.getElementById('id01').style.display='none'" class="closes" title="Close Modal">&times;</span>
+								</div>
+								
+								<p> Generate Timetable </p>
+								<label for="name"><b>Timetable Name</b></label>
+								<input class="box" type="text" placeholder="Enter Timetable Name" name="name" required>
+
+								<label for="department"><b>Department</b></label>
+								<select class="box" name="academicperiod" style="font-size:16px;">
+									<option value="0">Select Department:</option>
+									<option value="cs">Computer Science</option>
+									<option value="med">Medicine</option>
+									
+								</select>
+								
+								<p> Select Days </p>
+								
+								<label class="containerr">Monday
+								<input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+								</label>
+								
+								<label class="containerr">Tuesday
+								<input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+								</label>
+								
+								<label class="containerr">Wednesday
+								<input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+								</label>
+								
+								<label class="containerr">Thursday
+								<input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+								</label>
+								
+								<label class="containerr">Friday
+								<input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+								</label>
+
+								<label class="containerr">Saturday
+								<input type="checkbox" >
+								<span class="checkmark"></span>
+								</label>
+								
+								<label class="containerr">Sunday
+								<input type="checkbox">
+								<span class="checkmark"></span>
+								</label>
+								
+								<div class="clearfix">
+									<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+									<button style="border:none; height:auto; color:white; width:120px;" type="submit" class="add">Generate</button>
+								</div>
+							</div>
+						</form>
+				</div>
+				
+				</div>
+				
+							<div id="progress">
+							
+							
+							</div>
+				
 				</div>
 			</section>
 	</div>
@@ -149,5 +372,18 @@ background-color:#4B4949;
 		
 	</div>
 
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal)  {
+    modal.style.display = "none";
+  }
+}
+
+
+</script>
 </body>
 </html>

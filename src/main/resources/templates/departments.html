@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html lang="en">
 
 
 <head>
-<title>Rooms</title>
+<title>Classes</title>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 <style>
 #header{
   background-color: #4B4949;
@@ -111,6 +111,47 @@ margin-left:400px;
  padding:16px;
  }
  
+ #buttonadd{
+ padding:16px 16px 16px 0px;
+ }
+ 
+.btnn{
+	background-color:green;
+	width:auto; 
+	border:none; 
+	height:auto; 
+	color:white;
+	padding:5px;
+	}
+	
+.btnn2{
+	background-color:red;
+	width:auto; 
+	border:none; 
+	height:auto; 
+	color:white;
+	padding:7px;
+	}
+
+.btnn,.btnn2:hover{
+cursor:pointer;
+
+}
+
+ #a{
+ float:left;
+ }
+ 
+ #b{
+ float:left;
+ margin-left:16px;
+ margin-top: 18px;
+ }
+ 
+ #buttonadd{
+ display:inline-block;
+ padding-top:10px;
+ }
  .box{
   width: 100%;
   padding: 12px 20px;
@@ -119,6 +160,22 @@ margin-left:400px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+.box2{
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display:block;
+  width:380px;
+  }
+  
+.boxx{
+  float:left;
+  width: 170px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  display: inline-block;
+  }
 .closes {
   position: absolute;
   right: 25px;
@@ -139,27 +196,27 @@ margin-left:400px;
   clear: both;
   display: table;
 }
-.cancelbtn,.add{
+
+.clearfix{
+display:inline-block;
+}
+.add,.cancelbtn{
 float:left;
 width: auto;
 padding:10px;
 }
-.add:hover{
-opacity:0.7;
-cursor:pointer;
-}
-.cancelbtn:hover{
-opacity:0.7;
+.add,.cancelbtn:hover{
 cursor:pointer;
 }
 
 .cancelbtn{
 background-color:#f44336;
+margin-top:16px;
 }
 .add{
 background-color:#6a5acd;
-margin-left:220px;
-
+margin-top:16px;
+margin-left:230px;
 }
 
 #footer{
@@ -189,8 +246,8 @@ background-color:#4B4949;
 	
 	<div id="middlesection">
 			<nav id="button-group">
-
-				<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
+				
+			<<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
 				<a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
 				<a href="/admin/depts"> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Departments</button> </a>
 				<a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
@@ -199,7 +256,7 @@ background-color:#4B4949;
 				<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
 				<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 			
-				
+
 			</nav>
 	
 			<section id="sec">
@@ -216,28 +273,40 @@ background-color:#4B4949;
 					
 					<button class="btnsch2" onclick="document.getElementById('id01').style.display='block'" 
 					style="color:white; border:2px solid black;height:40px; width: 150px; background-color: #008080;">
-					<i class="fa fa-plus" aria-hidden="true"></i> Add New Room </button>
+					<i class="fa fa-plus" aria-hidden="true"></i> Add New Departments </button>
 					
 					
 					<div id="id01" class="modal">
 						
-						<form  class="modal-content" action="#" th:action="@{/admin/rooms/save}" th:object="${room}" method="post" style=width:450px;>
+						<form class="modal-content" action="" style=width:500px;>
 							<div class="container">
-								
+							<div class="rptcontainer">
 								<div id="cancelcontainer">
 								<span onclick="document.getElementById('id01').style.display='none'" class="closes" title="Close Modal">&times;</span>
 								</div>
 								
-								<p> Add New Lecture Room </p>
-								<label for="name"><b>Name</b></label>
-								<input class="box" type="text" placeholder="Enter Name" name="name"  th:field="*{number}"required>
+								<p style="display:inline-block;"> Add a Department and the Units taught in the department</p>
+							
+								<label for="name"><b>Department Name</b></label>
+								<input class="box" type="text" placeholder="Enter The Name of Department" name="name" required>
 
-								<label for="capacity"><b>Maximum Capacity</b></label>
-								<input class="box" type="number" placeholder="Enter the Capacity"  th:field="*{seatingCapasity}"name="capacity" required>
-
+								<div id= "buttonadd">
+									<button class="btnn" type="button">Add Another Unit</button>
+								</div>
+								
+								<div class="toberepeated">
+									<div id="a">
+									<label for="unit"><b>Unit</b></label>
+									<input class="box2" type="text" placeholder="Enter a unit taught in the above department" name="unit" required>
+									</div>
+									<div id="b">
+									<button class="btnn2" type="submit">Remove</button>
+									</div>
+								</div>
+							</div>
 								<div class="clearfix">
 									<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Room</button>
+									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Department and units</button>
 								</div>
 							</div>
 						</form>
@@ -245,39 +314,7 @@ background-color:#4B4949;
 				
 					</div>
 				</div>
-				<div id="">
-
-					<div class="container">
-
-						<table class="table" id="tabledisplay">
-
-							<thead>
-							<tr>
-							<th >Room Number</th>
-								<th >Capasity </th>
-
-							</tr>
-							</thead>
-
-							<tbody>
-
-
-
-							<tr th:each="room : ${rooms}">
-
-								<td th:text="${room.number}">Room Number</td>
-								<td th:text="${room.seatingCapasity}">Seating Capasity</td>
-
-
-							</tr>
-
-
-
-							</tbody>
-						</table>
-
-
-					</div>
+				<div id="generate">
 			
 				
 			
@@ -306,8 +343,41 @@ window.onclick = function(event) {
 }
 
 
-</script>
+var id_tracker=0;
+var unitsCount = 0;
 
+$(document).ready(function(){
+  $(".btnn").click(function(){
+  
+  
+  if(unitsCount <7){
+  
+  var id = 'unit_area'+id_tracker;
+  
+  var element = "<div class='toberepeated' id="+id+">"+
+					"<div id='a'>"+
+						"<label for='unit'><b>Unit</b></label>"+
+						"<input class='box2' type='text' placeholder='Enter a unit taught in department' name='unit' required>"+
+					"</div>"+
+					"<div id='b'>"+
+						"<button class='btnn2' type='button' onclick='remove(`"+id+"`)'>Remove</button>"+
+					"</div>"+
+				"</div>";
+				
+	id_tracker++;
+	unitsCount++;
+	$(".rptcontainer").append(element);
+	
+	}
+  });
+});
+
+function remove(idToRemove) {
+ $('#'+idToRemove).remove();
+ unitsCount--;
+}
+	
+</script>
 	<script>
 
 		$(document).ready(function() {

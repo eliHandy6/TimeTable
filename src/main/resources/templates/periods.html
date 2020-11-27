@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html  xmlns:th="http://thymeleaf.org" >
 
 
 <head>
-<title>Rooms</title>
+<title>Periods</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,6 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
 <style>
 #header{
   background-color: #4B4949;
@@ -112,12 +114,15 @@ margin-left:400px;
  }
  
  .box{
-  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
+  display: block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  
+}
+.time1,.time2{
+float:left;
 }
 .closes {
   position: absolute;
@@ -199,6 +204,7 @@ background-color:#4B4949;
 				<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
 				<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 			
+			
 				
 			</nav>
 	
@@ -215,29 +221,33 @@ background-color:#4B4949;
 					<div id="buttoncontainer">
 					
 					<button class="btnsch2" onclick="document.getElementById('id01').style.display='block'" 
-					style="color:white; border:2px solid black;height:40px; width: 150px; background-color: #008080;">
-					<i class="fa fa-plus" aria-hidden="true"></i> Add New Room </button>
+					style="color:white; border:2px solid black;height:40px; width: 150px; background-color: #008080">
+					<i class="fa fa-plus" aria-hidden="true"></i> Add New Time Slot</button>
 					
 					
 					<div id="id01" class="modal">
 						
-						<form  class="modal-content" action="#" th:action="@{/admin/rooms/save}" th:object="${room}" method="post" style=width:450px;>
+						<form class="modal-content" th:action="@{/admin/periods/save}" th:object="${meetingTimes}" method="post" style=width:450px;>
 							<div class="container">
 								
 								<div id="cancelcontainer">
 								<span onclick="document.getElementById('id01').style.display='none'" class="closes" title="Close Modal">&times;</span>
 								</div>
 								
-								<p> Add New Lecture Room </p>
-								<label for="name"><b>Name</b></label>
-								<input class="box" type="text" placeholder="Enter Name" name="name"  th:field="*{number}"required>
-
-								<label for="capacity"><b>Maximum Capacity</b></label>
-								<input class="box" type="number" placeholder="Enter the Capacity"  th:field="*{seatingCapasity}"name="capacity" required>
+								<p> Add New Time Slot </p>
+								<div class="time1" style= "margin-right:60px;">
+								<label for="time"><b>Start Time</b></label>
+								<input style="width:150px;" class="box" type="time" placeholder="" name="time" th:field="*{startTime}" required>
+								</div>
+								
+								<div class="time2">
+								<label for="time"><b>End Time</b></label>
+								<input style="width:150px;" class="box" type="time" placeholder="Enter End Time" name="time" th:field="*{endTime}" required>
+								</div>
 
 								<div class="clearfix">
 									<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Room</button>
+									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Time Slot</button>
 								</div>
 							</div>
 						</form>
@@ -246,15 +256,14 @@ background-color:#4B4949;
 					</div>
 				</div>
 				<div id="">
-
 					<div class="container">
 
 						<table class="table" id="tabledisplay">
 
 							<thead>
 							<tr>
-							<th >Room Number</th>
-								<th >Capasity </th>
+								<th >Starting at</th>
+								<th >Finishing at </th>
 
 							</tr>
 							</thead>
@@ -263,10 +272,10 @@ background-color:#4B4949;
 
 
 
-							<tr th:each="room : ${rooms}">
+							<tr th:each="period : ${periods}">
 
-								<td th:text="${room.number}">Room Number</td>
-								<td th:text="${room.seatingCapasity}">Seating Capasity</td>
+								<td th:text="${period.startTime}">Room Number</td>
+								<td th:text="${period.endTime}">Seating Capasity</td>
 
 
 							</tr>
@@ -307,7 +316,6 @@ window.onclick = function(event) {
 
 
 </script>
-
 	<script>
 
 		$(document).ready(function() {
