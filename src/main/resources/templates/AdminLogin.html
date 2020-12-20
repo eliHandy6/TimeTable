@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+
+
+<head>
+<title>Timetable</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid black;
+margin-top:20px;}
+.contform{
+margin-left:100px;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.submitbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submitbtn:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  float:left;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  height:30px;
+}
+
+img.avatar {
+  border-radius: 20%;
+}
+
+.container {
+  padding: 16px;
+}
+.container2{
+background-color:#d3d3d3;
+padding: 10px;
+height:85px;
+}
+
+.password {
+  float: left;
+   margin-top: 35px;
+   margin-left: 240px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.password {
+     display: block;
+     
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+
+<body>
+
+	<div class="header">
+		<!--<img src="logo.png" alt="logo" style="float: left; height: auto;width:auto;"> -->
+		<h2 id= "head">TIMETABLE MANAGEMENT SYSTEM</h2>
+		
+	</div>
+	
+	<div class="middlesection">
+			<nav class="button-group">
+				<a href="/" > <button class="btn"> Home </button> </a>
+				<a href="/admin" > <button class="btn"> Admin LogIn </button> </a>
+				<a href="/studentReg" > <button class="btn"> Student LogIn/SignUp</button> </a>
+				<a href="" > <button class="btn"> Contacts</button> </a>
+				<a href="/about" > <button class="btn"> About</button>
+			</nav>
+	
+			<article>
+				<div class= "sideimage">
+					<a style="text-decoration:none" href="/studentReg"><p class="text1" >	<b> <i> Are you a student? Click here to sign up and view timetable</i> </b> </p> </a>
+					
+					<div class=zoom>
+					<a href="/studentReg" >
+<!--						<img src= "Sidepic.png" alt= "sideImage" style="width: 200px; height:200px;">-->
+						<img src="../static/images/Sidepic.png.png" style="width: 200px; height:200px;" th:src="@{images/Sidepic.png}">
+
+					</a>
+					</div>
+					
+				</div>
+				
+				<div id="slider">
+				<div class= contform>
+
+					<div th:if="${param.error}" class="alert-danger">
+						Invalid Username and Password
+
+					</div>
+
+					<div th:if="${param.logout}" class="alert alert-success">
+						You have been logged Out
+
+					</div>
+					<form name="f" th:action="@{/login}" method="post" style="width:500px;">
+				
+						<div class="imgcontainer">
+						
+							<img src="../static/images/admin.png" alt="Avatar" class="avatar" th:src="@{images/admin.png}" style="height:55px; width:55px;">
+
+						</div>
+
+						<div class="container">
+							<label for="uname"><b>Username</b></label>
+							<input type="text" placeholder="Enter Username" id="username" name="username" required style="height:35px;">
+
+							<label for="psw"><b>Password</b></label>
+							<input type="password" placeholder="Enter Password"  id="password" name="password"required style="height:35px;">
+        
+							<button type="submit" class="submitbtn">Login</button>
+							<label>
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+							</label>
+						</div>
+
+						<div class="container2" style="">
+							<button type="button" class="cancelbtn">Cancel</button>
+							<span class="password">Forgot <a href="#">password?</a></span>
+						</div>
+					</form>
+				</div>
+				</div>
+			</article>
+	</div>
+	
+	<div class="footer">
+		<div id="containing">
+			<div class ="contactinfo">
+				<h4> CONTACT INFO </h4>
+					
+
+		
+			</div>
+		
+			<div class="projectlinks">
+				<h4> PROJECT LINKS </h4>
+					<div class="vertical-menu">
+						<a href="index.html" class="active">Home</a>
+						<a href="AdminLogin.html">Admin Login</a>
+						<a href="sinLog.html">Student Login</a>
+						<a href="#">Contact</a>
+						<a href="about.html">About</a>
+					</div>
+			</div>
+		
+			<div class="aboutproject">
+				<h4> ABOUT PROJECT </h4>
+				<p> Timetable management sytem project has been developed using PHP,CSS.Boootstrap
+				and Javascript.It has two users, an admin (head of a department  and a student). 
+				The admin does the major operations i.e: inputs classes, lecturers,time ,courses  
+				which are among the inputs required for automatic generation of the timetable.
+				The student can sign up and log in to view timetable.</p>
+		
+		
+			</div>
+		</div>
+	<div>
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://thymeleaf.org" lang="en">
 
 
 <head>
@@ -9,226 +9,228 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<style>
-#header{
-  background-color: #4B4949;
-  padding: 5px;
-  text-align: center;
-  color: black;
-  border: 2px solid black;
 
-}
-#middlesection{
+	<style>
+		#header{
+			background-color: #4B4949;
+			padding: 5px;
+			text-align: center;
+			color: black;
+			border: 2px solid black;
 
-
-}
-
-#button-group{
-float:left;
-background-color:#808080;
-width:20%;
-height:570px;
-list-style-type: none;
-
-}
-.btn{
-  border-radius:5%;
-  border:1px solid black;
-  height:40px;
-  width:100%;
-  margin-top:15px;
-  margin-bottom:15px;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size:15px;
-  }
-.btn:hover{
-cusor:pointer;
-background-color:#87cefa;
-color: white;
-cursor:pointer;
-}
-  
-#sec{
-float:left;
-background-color:#d3d3d3;
-width:80%;
-height:570px;
-}
-#dash{
-padding:10px;
-height:80px;
-}
-
-.btnsch2:hover{
-opacity:0.7;
-cursor:pointer;
-}
-.btnsch:hover{
-opacity:0.7;
-cursor:pointer;
-}
-#searchcontainer{
-float:left;
-}
-#buttoncontainer{
-float:left;
-margin-left:400px;
-}
+		}
+		#middlesection{
 
 
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  padding-top: 50px;
-}
-.modal-content{
-  background-color: #fefefe;
-  margin: 10% auto 15% auto; /* 10% from the top, 15% from the bottom and centered */
-  border: 3px solid black;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-#cancelcontainer{
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
- }
- .container{
- padding:16px;
- }
- 
- 
- .addmore{
- border:none;
- height:auto; 
- color:white;
- background-color:green;
- padding:5px;
- margin-top:20px;
- }
- 
- .addmore:hover{
- cursor:pointer;
- }
- 
- .box{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-.closes {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-.closess{
-  font-size: 35px;
-  font-weight: bold;
-  margin-left:15px;
-  }
+		}
 
-.closes:hover,
-.closes:focus {
-  color: red;
-  cursor: pointer;
-}
+		#button-group{
+			float:left;
+			background-color:#808080;
+			width:20%;
+			height:570px;
+			list-style-type: none;
 
-.closess:hover,
-.closess:focus {
-  color: red;
-  cursor: pointer;
-}
-.box1{
-  padding: 12px 20px;
-  margin: 8px 0;
-  display:block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  height:45px;
-}
+		}
+		.btn{
+			border-radius:5%;
+			border:1px solid black;
+			height:40px;
+			width:100%;
+			margin-top:15px;
+			margin-bottom:15px;
+			color: #000;
+			padding: 8px 16px;
+			text-decoration: none;
+			font-weight: bold;
+			font-size:15px;
+		}
+		.btn:hover{
+			cusor:pointer;
+			background-color:#87cefa;
+			color: white;
+			cursor:pointer;
+		}
 
-.box2{
-  width:135px; 
-  font-size:16px;
-  padding-left:25px;
-  margin: 8px 0;
-  display:block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  height:45px;
-  }
+		#sec{
+			float:left;
+			background-color:#d3d3d3;
+			width:80%;
+			height:570px;
+		}
+		#dash{
+			padding:10px;
+			height:80px;
+		}
 
-#unitt{
-float:left;
-margin-right:15px;
-}
-
-#maxx{
-float:left;
-margin-right:15px;
-}
-
-#lecturernm{
-float:left;
-
-}
+		.btnsch2:hover{
+			opacity:0.7;
+			cursor:pointer;
+		}
+		.btnsch:hover{
+			opacity:0.7;
+			cursor:pointer;
+		}
+		#searchcontainer{
+			float:left;
+		}
+		#buttoncontainer{
+			float:left;
+			margin-left:400px;
+		}
 
 
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.cancelbtn,.add{
-float:left;
-width: auto;
-padding:10px;
-}
-.add:hover{
-opacity:0.7;
-cursor:pointer;
-}
-.cancelbtn:hover{
-opacity:0.7;
-cursor:pointer;
-}
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			padding-top: 50px;
+		}
+		.modal-content{
+			background-color: #fefefe;
+			margin: 10% auto 15% auto; /* 10% from the top, 15% from the bottom and centered */
+			border: 3px solid black;
+			width: 80%; /* Could be more or less, depending on screen size */
+		}
+		#cancelcontainer{
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		.container{
+			padding:16px;
+		}
 
-.cancelbtn{
-background-color:#f44336;
-margin-top:30px;
-}
-.add{
-background-color:#6a5acd;
-margin-left:340px;
-margin-top:30px;
-}
 
-#footer{
+		.addmore{
+			border:none;
+			height:auto;
+			color:white;
+			background-color:green;
+			padding:5px;
+			margin-top:20px;
+		}
 
-background-color:#4B4949;
-  height: auto;
-  border: 2px solid black;
-  padding-left:400px;
-  padding-top:10px;
-  color: white;
-}
+		.addmore:hover{
+			cursor:pointer;
+		}
+
+		.box{
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		.closes {
+			position: absolute;
+			right: 25px;
+			top: 0;
+			color: #000;
+			font-size: 35px;
+			font-weight: bold;
+		}
+		.closess{
+			font-size: 35px;
+			font-weight: bold;
+			margin-left:15px;
+		}
+
+		.closes:hover,
+		.closes:focus {
+			color: red;
+			cursor: pointer;
+		}
+
+		.closess:hover,
+		.closess:focus {
+			color: red;
+			cursor: pointer;
+		}
+		.box1{
+			padding: 12px 20px;
+			margin: 8px 0;
+			display:block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			height:45px;
+		}
+
+		.box2{
+			width:135px;
+			font-size:16px;
+			padding-left:25px;
+			margin: 8px 0;
+			display:block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			height:45px;
+		}
+
+		#unitt{
+			float:left;
+			margin-right:15px;
+		}
+
+		#maxx{
+			float:left;
+			margin-right:15px;
+		}
+
+		#lecturernm{
+			float:left;
+
+		}
+
+
+		.clearfix::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+		.cancelbtn,.add{
+			float:left;
+			width: auto;
+			padding:10px;
+		}
+		.add:hover{
+			opacity:0.7;
+			cursor:pointer;
+		}
+		.cancelbtn:hover{
+			opacity:0.7;
+			cursor:pointer;
+		}
+
+		.cancelbtn{
+			background-color:#f44336;
+			margin-top:30px;
+		}
+		.add{
+			background-color:#6a5acd;
+			margin-left:340px;
+			margin-top:30px;
+		}
+
+		#footer{
+			background-color:#4B4949;
+			height: auto;
+			border: 2px solid black;
+			padding-left:400px;
+			padding-top:10px;
+			color: white;
+		}
+	</style>
 
 </head>
 
@@ -236,7 +238,8 @@ background-color:#4B4949;
 
 
 
-</style>
+
+
 
 <body>
 
@@ -255,7 +258,7 @@ background-color:#4B4949;
 			<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses Details</button> </a>
 			<a href="/admin/periods"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
 			<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
-			<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+			<a href="/logout"> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 			
 			
 				
@@ -280,7 +283,7 @@ background-color:#4B4949;
 					
 					<div id="id01" class="modal">
 						
-						<form class="modal-content" action="" style=width:600px;>
+						<form class="modal-content" style=width:600px; >
 							<div class="container">
 							<div class="rptcontainer">
 								<div id="cancelcontainer">
@@ -290,12 +293,11 @@ background-color:#4B4949;
 								<p> Add New Course information </p>
 								
 								<label for="department"><b>Department Name</b></label>
-								<select class="box" name="department" style="font-size:16px;">
-									<option value="0">Select Department:</option>
-									<option value="semester1">Computer Science</option>
-									<option value="semester2">Biological Sciences</option>
-									<option value="semester2">Medicine</option>
-									
+
+								<select id="dept" class="box" th:field="*{depts}" style="font-size:16px;">
+									<option value="" hidden> Select Department</option>
+									<option  th:each="dept: ${depts} "th:value="${dept.id}" th:text="${dept.name}" ></option>
+
 								</select>
 								
 								<div id ="addbtn">
@@ -304,47 +306,12 @@ background-color:#4B4949;
 								
 								</div>
 
-								<div class="fieldgroup">
-								
-									<div id="unitt">
-										
-										<label for="unit"><b>Unit</b></label>
-										<select class="box1" name="unit" style="font-size:16px;width:150px;">
-											<option value="0">Select unit:</option>
-											<option value="">comp 493</option>
-											<option value="">  </option>
-											<option value="">  </option>
-										</select>
-										
-									</div>
-									<div id="maxx">
-									
-										<label for="max"><b>Maximum Students</b></label>
-										<input class="box2" style="" type="number" placeholder="Full Class" name="max" required>
-									
-									</div>
-									<div id="lecturernm">
-									
-										<label for="lecturer"><b>Taught By:</b></label>
-										<select class="box1" name="lecturer" style="font-size:16px; width:200px;">
-											<option value="0">Select The lecturer:</option>
-											<option value="">  </option>
-											<option value="">  </option>
-											<option value="">  </option>
-										</select>
-									
-									</div>
-									<div id="cancels" style="float:left;padding-top:30px;">
-									
-									<span class="closess" title="Remove">&times;</span>
-									
-									</div>
-								</div>
+
 							</div>
 								<div class="clearfix">
 									<button style="border:none; height:auto; color:white;" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 									
-									<button style="border:none; height:auto; color:white;" type="submit" class="add">Add Course Information</button>
+									<button style="border:none; height:auto; color:white;" type="button" onclick="saveDetails()" class="add">Add Course Information</button>
 								</div>
 							</div>
 						</form>
@@ -385,56 +352,127 @@ var unitsCount = 0;
 
 $(document).ready(function(){
   $(".addmore").click(function(){
-  
-  
+
   if(unitsCount <7){
+
+  	let lec = 'lecturer';
+  	let unit = 'unit';
+  	let size = 'max_size';
   
-  var id = 'unit_area'+id_tracker;
+  let id = 'unit_area'+id_tracker;
+  let unitId = unit+id_tracker;
+  let lecturerId = lec+id_tracker;
+  let sizeId = size+id_tracker;
   
   var element = "<div class='fieldgroup' id="+id+">"+
-								
+
 									"<div id='unitt'>"+
-										"<select class='box1' name='unit' style='font-size:16px;width:150px;'>"+
-											"<option value='0'>Select unit:</option>"+
-											"<option value=''>comp 493</option>"+
-											"<option value=''>  </option>"+
-											"<option value=''>  </option>"+
+										"<select id="+unitId+" onchange='updateValue("+id_tracker+",\""+unit+"\")' class='box1'  th:field=\"*{units}\"  name='unit' style='font-size:16px;width:150px;'>"+
+											"<option > Select unit</option>"+
 										"</select>"+
 										
 									"</div>"+
 									"<div id='maxx'>"+
 			
-										"<input class='box2' style='' type='number' placeholder='Full Class' name='max' required>"+
+										"<input id="+sizeId+"  onkeyup='updateValue("+id_tracker+",\""+size+"\")' class='box2' style='' type='number'   th:field=\"*{noOfStudents}\" placeholder='Full Class' name='max' required>"+
 									
 									"</div>"+
 									"<div id='lecturernm'>"+
-					
-										"<select class='box1' name='lecturer' style='font-size:16px; width:200px;'>"+
-											"<option value='0'>Select The lecturer:</option>"+
-											"<option value=''>  </option>"+
-											"<option value=''>  </option>"+
-											"<option value=''>  </option>"+
+
+										"<select id="+lecturerId+" onchange='updateValue("+id_tracker+",\""+lec+"\")' class='box1' name='lecturer' style='font-size:16px; width:200px;'>"+
+		  								"<option > Select Lecturer</option>"+
 										"</select>"+
 									
 									"</div>"+
 									"<div id='cancels' style='float:left;padding-top:30px;'>"+
 									
-									"<span onclick='remove(`"+id+"`)' class='closess' title='Remove'>&times;</span>"+
+									"<span onclick='remove(`"+id+"`, "+unitsCount+")' class='closess' title='Remove'>&times;</span>"+
 									
 									"</div>"+
 								"</div>";
 				
-	id_tracker++;
-	unitsCount++;
+
 	$(".rptcontainer").append(element);
-	
+	  loadUnits(unitId);
+	  loadLecturers(lecturerId);
+
+	  details.push({unit_id: 0, no_of_students: 0, lecturer: 0})
+
+	  id_tracker++;
+	  unitsCount++;
 	}
   });
+
 });
 
-function remove(idToRemove) {
- $('#'+idToRemove).remove();
- unitsCount--;
+function remove(idToRemove, id) {
+	$('#'+idToRemove).remove();
+	delete details[id];
+
+	console.log(details)
+	unitsCount--;
+}
+
+function updateValue(id, field) {
+
+	switch (field) {
+		case 'unit':
+			let unit = $('#unit'+id).val();
+			details[id].unit_id = unit;
+			break;
+
+		case 'lecturer':
+			let lec = $('#lecturer'+id).val();
+			details[id].lecturer = lec;
+			break;
+
+		case 'max_size':
+			let size = $('#max_size'+id).val();
+			details[id].no_of_students = size;
+			break;
+	}
+
+}
+
+function saveDetails() {
+
+	let tempDetails = [];
+	for (let i = 0; i < details.length; i++) {
+		if (details[i] !== undefined) {
+			tempDetails.push(details[i]);
+		}
+	}
+
+	let dep = $("#dept").val();
+	let payload = {department: dep, course_details: tempDetails };
+
+	console.log(payload)
+
+	//send payload
+	$.ajax({
+		url: `/admin/rest_courses`,
+		method: "POST",
+		data: JSON.stringify(payload),
+		dataType:"json",
+		contentType:"application/json",
+		success: function (response) {
+			console.log(response)
+			for (let i = 0; i < details.length; i++) {
+				remove('unit_area'+i, i)
+			}
+
+			details = [];
+		},
+		error:function (error) {
+			for (let i = 0; i < details.length; i++) {
+				remove('unit_area'+i, i);
+				delete details[i];
+			}
+
+		}
+
+	})
+
 }
 </script>
 	<script>
@@ -444,6 +482,112 @@ function remove(idToRemove) {
 
 		});
 	</script>
+
+	<script>
+		$(document).ready(function() {
+			$('#dept').change(function () {
+				var dept_id = $(this).val();
+				// console.log(dept_id)
+				$.ajax({
+					url: `/admin/units/${dept_id}`,
+					method: "POST",
+					data: [],
+					success: function (response) {
+
+						var len = response.length;
+
+						$("#units").empty();
+						for( var i = 0; i<len; i++){
+							var id = response[i]['id'];
+							var name = response[i]['unitName'];
+
+							$("#units").append("<option value='"+id+"'>"+name+"</option>");
+
+						}
+
+					}
+				})
+			})
+		})
+
+		function loadUnits(id) {
+			let my_id= id;
+			$(document).ready(function() {
+				$('#dept').change(function () {
+					var dept_id = $(this).val();
+					$.ajax({
+						url: `/admin/units/${dept_id}`,
+						method: "POST",
+						data: [],
+						success: function (response) {
+							var len = response.length;
+
+							$("#"+my_id).empty();
+							for( var i = 0; i<len; i++){
+								var id = response[i]['id'];
+								var name = response[i]['unitName'];
+								$("#"+my_id).append("<option value='"+id+"'>"+name+"</option>");
+							}
+						}
+					})
+				})
+
+				//handle default condition
+				var dept_id = $('#dept').val();
+				// alert(dept_id)
+				$.ajax({
+					url: `/admin/units/${dept_id}`,
+					method: "POST",
+					data: [],
+					success: function (response) {
+						var len = response.length;
+
+						$("#"+my_id).empty();
+						for( var i = 0; i<len; i++){
+							var id = response[i]['id'];
+							var name = response[i]['unitName'];
+
+							$("#"+my_id).append("<option value='"+id+"'>"+name+"</option>");
+
+						}
+
+					}
+				})
+			})
+		}
+
+		function loadLecturers(id) {
+			let my_id= id;
+			$(document).ready(function() {
+				$.ajax({
+						url: `/admin/lecturers/find`,
+						method: "GET",
+						data: [],
+						success: function (response) {
+							var len = response.length;
+
+							$("#"+my_id).empty();
+							for( var i = 0; i<len; i++){
+								const id = response[i]['id'];
+								const name = response[i]['name'];
+								$("#"+my_id).append("<option value='"+id+"'>"+name+"</option>");
+							}
+						}
+					})
+			})
+		}
+
+	</script>
+<script>
+	// let details = {unit_id: "", no_of_students:"500", lecturer:"white"};
+	let details = [];
+</script>
+
+
+
+
+
+
 
 </body>
 </html>

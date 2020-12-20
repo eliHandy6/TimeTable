@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://thymeleaf.org" lang="en">
+
+
+<head>
+    <title>Classes</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <style>
+        #header{
+            background-color: #4B4949;
+            padding: 5px;
+            text-align: center;
+            color: black;
+            border: 2px solid black;
+
+        }
+        #middlesection{
+
+
+        }
+
+        #button-group{
+            float:left;
+            background-color:#808080;
+            width:20%;
+            height:570px;
+            list-style-type: none;
+
+        }
+        .btn{
+            border-radius:5%;
+            border:1px solid black;
+            height:40px;
+            width:100%;
+            margin-top:15px;
+            margin-bottom:15px;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size:15px;
+        }
+        .btn:hover{
+            cusor:pointer;
+            background-color:#87cefa;
+            color: white;
+            cursor:pointer;
+        }
+
+        #sec{
+            float:left;
+            background-color:#d3d3d3;
+            width:80%;
+            height:570px;
+        }
+        #dash{
+            padding:10px;
+            height:80px;
+        }
+        #generate{
+            background-color:blue;
+
+        }
+        .btnsch2:hover{
+            opacity:0.7;
+            cursor:pointer;
+        }
+        .btnsch:hover{
+            opacity:0.7;
+            cursor:pointer;
+        }
+        #searchcontainer{
+            float:left;
+        }
+        #buttoncontainer{
+            float:left;
+            margin-left:400px;
+        }
+
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            padding-top: 50px;
+        }
+        .modal-content{
+            background-color: #fefefe;
+            margin: 10% auto 15% auto; /* 10% from the top, 15% from the bottom and centered */
+            border: 3px solid black;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        #cancelcontainer{
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+        .container{
+            padding:16px;
+        }
+
+        #buttonadd{
+            padding:16px 16px 16px 0px;
+        }
+
+        .btnn{
+            background-color:green;
+            width:auto;
+            border:none;
+            height:auto;
+            color:white;
+            padding:5px;
+        }
+
+        .btnn2{
+            background-color:red;
+            width:auto;
+            border:none;
+            height:auto;
+            color:white;
+            padding:7px;
+        }
+
+        .btnn,.btnn2:hover{
+            cursor:pointer;
+
+        }
+
+        #a{
+            float:left;
+        }
+
+        #b{
+            float:left;
+            margin-left:16px;
+            margin-top: 18px;
+        }
+
+        #buttonadd{
+            display:inline-block;
+            padding-top:10px;
+        }
+        .box{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .box2{
+            padding: 7px 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display:block;
+            width:380px;
+        }
+
+        .boxx{
+            float:left;
+            width: 170px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .closes {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .closes:hover,
+        .closes:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .clearfix{
+            display:inline-block;
+        }
+        .add,.cancelbtn{
+            float:left;
+            width: auto;
+            padding:10px;
+        }
+        .add,.cancelbtn:hover{
+            cursor:pointer;
+        }
+
+        .cancelbtn{
+            background-color:#f44336;
+            margin-top:16px;
+        }
+        .add{
+            background-color:#6a5acd;
+            margin-top:16px;
+            margin-left:230px;
+        }
+
+        #footer{
+
+            background-color:#4B4949;
+            height: auto;
+            border: 2px solid black;
+            padding-left:400px;
+            padding-top:10px;
+            color: white;
+        }
+
+        </head>
+
+
+
+
+
+    </style>
+
+<body>
+
+<div id="header">
+    <h2 style="color:#c0c0c0;">Timetable Management Dashboard</h2>
+
+</div>
+
+<div id="middlesection">
+    <nav id="button-group">
+
+        <<a href="/admin"> <button class="btn"><i class="fa fa-home"></i> Dashboard</button> </a>
+        <a href="/admin/rooms"> <button class="btn"><i class="fa fa-folder"></i> Rooms</button> </a>
+        <a href="/admin/depts"> <button class="btn"><i class="fa fa-users" aria-hidden="true"></i> Departments</button> </a>
+        <a href="/admin/lecturers"> <button class="btn"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Lectuers</button> </a>
+        <a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses Details</button> </a>
+        <a href="/admin/periods"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
+        <a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
+        <a href="/logout"> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+
+    </nav>
+
+    <section id="sec">
+        <div id="dash">
+            <div id="searchcontainer">
+                <form action="">
+                    <input type="text" placeholder="Enter a keyword to search.." name="search" style="float:left; border:none; width:400px; height:30px;">
+                    <button class="btnsch" type="submit" style="float:left;border:none;
+						background-color:#008080;width:30px; height:32px;color:white;"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+        </div>
+        <div id="">
+
+            <div class="container">
+
+                <h3 align="center" th:text="${timetablename.names}">mocking text</h3>
+
+
+                <table class="table" id="tabledisplay">
+
+                    <thead>
+                    <tr>
+                        <th >Department Name</th>
+                        <th >Unit </th>
+                        <th >Room</th>
+                        <th >Instructor</th>
+                        <th >Meeting Time</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="class : ${classes}">
+                        <td th:text="${class.dept.name}">Department Name</td>
+                        <td th:text="${class.course.units.unitName}" >Unit</td>
+                        <td th:text="${class.room.number}" >Room</td>
+                        <td th:text="${class.instructor.name}">Instructor</td>
+                        <td th:text="${class.meetingTimes.startTime +' - '+class.meetingTimes.endTime}">Meeting Time</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+
+
+
+        </div>
+    </section>
+</div>
+
+<div id="footer">
+
+
+    <p style=""><i class="fa fa-whatsapp" aria-hidden="true"></i> Tel/Whatsapp: 0758882011</p>
+    <p style=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Email :davidmalamu79@gmail.com </p>
+
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal)  {
+            modal.style.display = "none";
+        }
+    }
+
+
+    var id_tracker=0;
+    var unitsCount = 0;
+
+    $(document).ready(function(){
+        $(".btnn").click(function(){
+
+
+            if(unitsCount <7){
+
+                var id = 'unit_area'+id_tracker;
+
+                var element = "<div class='toberepeated' id="+id+">"+
+                    "<div id='a'>"+
+                    "<label for='unit'><b>Unit</b></label>"+
+                    "<input class='box2' type='text' placeholder='Enter a unit taught in department' name='unit' required>"+
+                    "</div>"+
+                    "<div id='b'>"+
+                    "<button class='btnn2' type='button' onclick='remove(`"+id+"`)'>Remove</button>"+
+                    "</div>"+
+                    "</div>";
+
+                id_tracker++;
+                unitsCount++;
+                $(".rptcontainer").append(element);
+
+            }
+        });
+    });
+
+    function remove(idToRemove) {
+        $('#'+idToRemove).remove();
+        unitsCount--;
+    }
+
+</script>
+<script>
+
+    $(document).ready(function() {
+        $('#tabledisplay').DataTable()
+
+    });
+</script>
+
+</body>
+</html>

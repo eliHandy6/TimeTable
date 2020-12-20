@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://thymeleaf.org" lang="en">
 
 
 <head>
@@ -254,8 +254,7 @@ background-color:#4B4949;
 				<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses Details</button> </a>
 				<a href="/admin/periods"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
 				<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
-				<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
-			
+				<a href="/logout"> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 
 			</nav>
 	
@@ -278,7 +277,7 @@ background-color:#4B4949;
 					
 					<div id="id01" class="modal">
 						
-						<form class="modal-content" action="" style=width:500px;>
+						<form class="modal-content" th:action="@{/admin/depts/save}" th:object="${department}" method="post"  style=width:500px;>
 							<div class="container">
 							<div class="rptcontainer">
 								<div id="cancelcontainer">
@@ -288,7 +287,7 @@ background-color:#4B4949;
 								<p style="display:inline-block;"> Add a Department and the Units taught in the department</p>
 							
 								<label for="name"><b>Department Name</b></label>
-								<input class="box" type="text" placeholder="Enter The Name of Department" name="name" required>
+								<input class="box" type="text" placeholder="Enter The Name of Department" name="name" th:field="*{name}"  required>
 
 								<div id= "buttonadd">
 									<button class="btnn" type="button">Add Another Unit</button>
@@ -297,7 +296,7 @@ background-color:#4B4949;
 								<div class="toberepeated">
 									<div id="a">
 									<label for="unit"><b>Unit</b></label>
-									<input class="box2" type="text" placeholder="Enter a unit taught in the above department" name="unit" required>
+									<input class="box2" type="text" placeholder="Enter a unit taught in the above department" name="unit"  th:field="*{unit}" required>
 									</div>
 									<div id="b">
 									<button class="btnn2" type="submit">Remove</button>
@@ -314,7 +313,34 @@ background-color:#4B4949;
 				
 					</div>
 				</div>
-				<div id="generate">
+				<div id="">
+
+					<div class="container">
+
+						<table class="table" id="tabledisplay">
+
+							<thead>
+							<tr>
+								<th >Department Name</th>
+								<th >Unit</th>
+
+							</tr>
+							</thead>
+
+							<tbody>
+
+							<tr th:each="unit : ${units}">
+
+								<td th:text="${unit.depts.name}">Department Name</td>
+								<td th:text="${unit.unitName}">Unit</td>
+
+							</tr>
+
+							</tbody>
+						</table>
+
+
+					</div>
 			
 				
 			

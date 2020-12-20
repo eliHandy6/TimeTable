@@ -1,6 +1,10 @@
 package com.malamu.timetable.controllers;
 
+import com.malamu.timetable.models.TimetableDao;
+import com.malamu.timetable.models.TimetableNames;
+import com.malamu.timetable.repositories.TimetableRepository;
 import com.malamu.timetable.services.CourseService;
+import com.malamu.timetable.services.DeptServices;
 import com.malamu.timetable.services.LecturerService;
 import com.malamu.timetable.services.RoomService;
 import lombok.AllArgsConstructor;
@@ -18,9 +22,14 @@ public class DashboardController {
     private final LecturerService lecturerService;
     private final CourseService courseService;
     private final RoomService roomService;
+    private final DeptServices deptServices;
+    private final TimetableRepository timetableRepository;
 
     @GetMapping
     public String dashboard(Model model, RedirectAttributes redirectAttributes){
+        TimetableDao timetableDao=new TimetableDao();
+        model.addAttribute("department",timetableDao);
+        model.addAttribute("timetablenames",timetableRepository.findAll());
         return "dashboard";
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://thymeleaf.org" lang="en">
 
 
 <head>
@@ -85,6 +85,12 @@ color:blue;
 margin-top:100px;
 margin-left:350px;
 }
+
+#view{
+	margin-top:10px;
+	margin-left:350px;
+}
+
 
 .modal {
   display: none; /* Hidden by default */
@@ -267,7 +273,7 @@ background-color:#4B4949;
 				<a href="/admin/courses"> <button class="btn"><i class="fa fa-bars"></i> Courses Details</button> </a>
 				<a href="/admin/periods"> <button class="btn"><i class="fa fa-clock-o" aria-hidden="true"></i>Periods</button> </a>
 				<a href=""> <button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i> My Account</button> </a>
-				<a href=""> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
+				<a href="/logout"> <button class="btn"><i class="fa fa-sign-out" aria-hidden="true"></i></i> Log Out</button> </a>
 			
 				
 			</nav>
@@ -289,7 +295,7 @@ background-color:#4B4949;
 				
 				<div id="id01" class="modal">
 						
-						<form class="modal-content" action="" style=width:450px;>
+						<form class="modal-content"   th:action="@{/admin/generatetimetable/save}" method="post" th:object="${department}" action="" style=width:450px;>
 							<div class="container">
 								
 								<div id="cancelcontainer">
@@ -298,52 +304,9 @@ background-color:#4B4949;
 								
 								<p> Generate Timetable </p>
 								<label for="name"><b>Timetable Name</b></label>
-								<input class="box" type="text" placeholder="Enter Timetable Name" name="name" required>
+								<input  th:field="*{name}" class="box" type="text" placeholder="Enter Timetable Name" name="name" required>
 
-								<label for="department"><b>Department</b></label>
-								<select class="box" name="academicperiod" style="font-size:16px;">
-									<option value="0">Select Department:</option>
-									<option value="cs">Computer Science</option>
-									<option value="med">Medicine</option>
-									
-								</select>
-								
-								<p> Select Days </p>
-								
-								<label class="containerr">Monday
-								<input type="checkbox" checked="checked">
-								<span class="checkmark"></span>
-								</label>
-								
-								<label class="containerr">Tuesday
-								<input type="checkbox" checked="checked">
-								<span class="checkmark"></span>
-								</label>
-								
-								<label class="containerr">Wednesday
-								<input type="checkbox" checked="checked">
-								<span class="checkmark"></span>
-								</label>
-								
-								<label class="containerr">Thursday
-								<input type="checkbox" checked="checked">
-								<span class="checkmark"></span>
-								</label>
-								
-								<label class="containerr">Friday
-								<input type="checkbox" checked="checked">
-								<span class="checkmark"></span>
-								</label>
 
-								<label class="containerr">Saturday
-								<input type="checkbox" >
-								<span class="checkmark"></span>
-								</label>
-								
-								<label class="containerr">Sunday
-								<input type="checkbox">
-								<span class="checkmark"></span>
-								</label>
 								
 								<div class="clearfix">
 									<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -354,6 +317,42 @@ background-color:#4B4949;
 				</div>
 				
 				</div>
+
+
+					<div id="view">
+						<button class="butt" onclick="document.getElementById('id02').style.display='block'"
+								style="background-color:#f4a460; width:250px; height: 80px;font size:15px">
+							<i class="fa fa-calendar" aria-hidden="true"></i> View Timetables </button>
+
+						<div id="id02" class="modal">
+
+							<form class="modal-content"   th:action="@{/admin/generatetimetable/view}" method="post" th:object="${department}" action="" style=width:450px;>
+								<div class="container">
+
+									<div id="cancel">
+										<span onclick="document.getElementById('id02').style.display='none'" class="closes" title="Close Modal">&times;</span>
+									</div>
+
+									<p> View Timetable </p>
+									<label for=""><b>TimeTable Names</b></label>
+
+									<select th:field="*{id}"  class="box" style="font-size:16px;">
+
+										<option  th:each="timetable: ${timetablenames} "th:value="${timetable.id}" th:text="${timetable.names}" ></option>
+
+									</select>
+
+
+
+									<div class="clearfix">
+										<button style="border:none; height:auto; color:white" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+										<button style="border:none; height:auto; color:white; width:120px;" type="submit" class="add">View</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+					</div>
 				
 							<div id="progress">
 							

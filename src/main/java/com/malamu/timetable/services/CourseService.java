@@ -29,6 +29,11 @@ public class CourseService {
     public  Course findCourseById(int id){
        return courseRepository.findById(id).get();
     }
+    @Transactional
+    public  List<Course> findByDeptId(int id){
+//        System.out.println("Hello"+id);
+        return courseRepository.findByDeptsId(id);
+    }
 
     @Transactional
     public List<Course> findAvailableCourses(){
@@ -40,8 +45,8 @@ public class CourseService {
         Lecturer lecturer=lecturerService.findLecturerById(course.getLecturer().getId());
 
         Course course1=courseRepository.findById(id).get();
-        course1.setName(course.getName());
-        course1.setNumber(course.getNumber());
+//        course1.setName(course.getName());
+//        course1.setNumber(course.getNumber());
         course1.setNoOfStudents(course.getNoOfStudents());
         course1.setLecturer(lecturer);
         return courseRepository.save(course1);

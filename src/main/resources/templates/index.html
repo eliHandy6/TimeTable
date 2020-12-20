@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"  lang="en">
+
+<head>
+<title>Timetable</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+
+<body>
+
+	<div class="header">
+		<!--<img src="logo.png" alt="logo" style="float: left; height: auto;width:auto;"> -->
+		<h2 id= "head">TIMETABLE MANAGEMENT SYSTEM</h2>
+		
+	</div>
+	
+	<div class="middlesection">
+			<nav class="button-group">
+				<a href="/"> <button class="btn"> Home </button> </a>
+				<a href="/admin" > <button class="btn"> Admin LogIn </button> </a>
+				<a href="/studentReg" > <button class="btn"> Student SignUp and Sigin </button> </a>
+				<a href="" > <button class="btn"> Contacts</button> </a>
+				<a href="/about" > <button class="btn"> About</button>
+			</nav>
+	
+			<article>
+				<div class= "sideimage">
+					<a style="text-decoration:none" href="/studentReg"><p class="text1" >	<b> <i> Are you a student? Click here to sign up and view timetable</i> </b> </p> </a>
+					
+					<div class=zoom>
+					<a href="/studentReg" >
+						<img src="../static/images/Sidepic.png.png" style="width: 200px; height:200px;" th:src="@{images/Sidepic.png}">
+
+					</a>
+					</div>
+					
+				</div>
+				
+				<div id="slider">
+					<h2 style="margin-left:50px;text-shadow: 3px 2px #a9a9a9;"> Welcome to timetable management system</h2>
+				<div class="slideshow-container">
+
+					<div class="mySlides fade">
+						<div class="numbertext">1 / 4</div>
+						<img src="../static/images/image 4.jpg" style="width:590px; height:340px" th:src="@{images/image 4.jpg}">
+						<div class="text">Time isn't the main thing, its the only thing</div>
+					</div>
+
+					<div class="mySlides fade">
+						<div class="numbertext">2 / 4</div>
+						<img src="../static/images/image 6.jpg" style="width:590px; height:340px" th:src="@{images/image 6.jpg}">
+						<div class="text">Just do it</div>
+					</div>
+
+					<div class="mySlides fade">
+						<div class="numbertext">3 / 4</div>
+<!--						<img src="" style="width:590px; height:340px">-->
+						<img src="../static/images/image 2.png" style="width:590px; height:340px" th:src="@{images/image 2.png}">
+
+						<div class="text">It's time to use time effectively </div>
+					</div>
+					
+					<div class="mySlides fade">
+						<div class="numbertext">4 / 4</div>
+
+						<img src="../static/images/image 3.png" style="width:590px; height:340px" th:src="@{images/image 3.png}">
+
+<!--						<img src="image 3.png" style="width:590px; height:340px">-->
+						<div class="text">Learn more spend less</div>
+					</div>
+
+				</div>
+				<br>
+
+				<div style="text-align:center">
+					<span class="dot"></span> 
+					<span class="dot"></span> 
+					<span class="dot"></span> 
+					<span class="dot"></span> 
+				</div>
+
+				</div>
+    
+			</article>
+	</div>
+	
+	<div class="footer">
+		<div id="containing">
+			<div class ="contactinfo">
+				<h4> CONTACT INFO </h4>
+					
+				
+		
+			</div>
+		
+			<div class="projectlinks">
+				<h4> PROJECT LINKS </h4>
+					<div class="vertical-menu">
+						<a href="index.html" class="active">Home</a>
+						<a href="AdminLogin.html">Admin Login</a>
+						<a href="sinLog.html">Student Login</a>
+						<a href="#">Contact</a>
+						<a href="about.html">About</a>
+					</div>
+			</div>
+		
+			<div class="aboutproject">
+				<h4> ABOUT PROJECT </h4>
+				<p> Timetable management sytem project has been developed using PHP,CSS.Boootstrap
+				and Javascript.It has two users, an admin (head of a department  and a student). 
+				The admin does the major operations i.e: inputs classes, lecturers,time ,courses  
+				which are among the inputs required for automatic generation of the timetable.
+				The student can sign up and log in to view timetable.</p>
+		
+		
+			</div>
+		</div>
+	<div>
+
+	<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2500); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>

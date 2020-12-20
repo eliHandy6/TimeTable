@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<title>Timetable</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/css/styles.css">
+
+<style>
+
+#txt{
+font-weight: bold;
+  font-style: italic;
+   color:#2f4f4f;
+  text-shadow: 1px 1px black;
+  font-size: 13px;
+  }
+#about{
+padding-top:100px;
+padding-left:100px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+	<div class="header">
+		<!--<img src="logo.png" alt="logo" style="float: left; height: auto;width:auto;"> -->
+		<h2 id= "head">TIMETABLE MANAGEMENT SYSTEM</h2>
+		
+	</div>
+	
+	<div class="middlesection">
+			<nav class="button-group">
+				<a href="/" > <button class="btn"> Home </button> </a>
+				<a href="/admin" > <button class="btn"> Admin LogIn </button> </a>
+				<a href="/studentReg" > <button class="btn"> Student LogIn/SignUp</button> </a>
+				<a href="" > <button class="btn"> Contacts</button> </a>
+				<a href="/about" > <button class="btn"> About</button>
+			</nav>
+	
+			<article>
+				<div class= "sideimage">
+					<a style="text-decoration:none" href="/studentReg"><p class="text1" >	<b> <i> Are you a student? Click here to sign up and view timetable</i> </b> </p> </a>
+					
+					<div class=zoom>
+					<a href="/studentReg" >
+<!--						<img src= "Sidepic.png" alt= "sideImage" style="width: 200px; height:200px;">-->
+						<img src="../static/images/Sidepic.png" style="width: 200px; height:200px;" th:src="@{images/Sidepic.png}">
+
+					</a>
+					</div>
+					
+				</div>
+				
+				<div id="slider">
+					<div id="about">
+					<h2> About timetable system </h2>
+					<div id="txt"> Timetable management sytem project has been developed using <br> Java,CSS
+				and Javascript.It has two users, an admin <br>(head of a department  and a student). 
+				The admin does the major operations<br> i.e: inputs classes, lecturers,time ,courses  
+				which are among the inputs <br>required for automatic generation of the timetable.
+				Genetic algorithm <br>has been implimented for this automatic generation.<br>
+				The student can sign up and log in to view timetable.</div>
+				
+					</div>
+				</div>
+    
+			</article>
+	</div>
+	
+	<div class="footer">
+		<div id="containing">
+			<div class ="contactinfo">
+				<h4> CONTACT INFO </h4>
+					
+
+		
+			</div>
+		
+			<div class="projectlinks">
+				<h4> PROJECT LINKS </h4>
+					<div class="vertical-menu">
+						<a href="index.html" class="active">Home</a>
+						<a href="AdminLogin.html">Admin Login</a>
+						<a href="sinLog.html">Student Login</a>
+						<a href="#">Contact</a>
+						<a href="about.html">About</a>
+					</div>
+			</div>
+		
+			<div class="aboutproject">
+				<h4> ABOUT PROJECT </h4>
+				<p> Timetable management sytem project has been developed using Java,CSS
+				and Javascript.It has two users, an admin (head of a department  and a student). 
+				The admin does the major operations i.e: inputs classes, lecturers,time ,courses  
+				which are among the inputs required for automatic generation of the timetable.
+				Genetic algorithm has been implimented for this automatic generation.
+				The student can sign up and log in to view timetable.</p>
+		
+		
+			</div>
+		</div>
+	<div>
+	
+</body>
+</html>

@@ -1,13 +1,13 @@
 package com.malamu.timetable.repositories;
 
-import com.malamu.timetable.models.Depts;
+import com.malamu.timetable.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface DeptsRepository  extends JpaRepository<Depts,Integer> {
+public interface RoleRepository extends JpaRepository<Role,Integer> {
 
-    Optional<Depts >findByName(String s);
+   Optional< Role> findByName(String name);
 }
